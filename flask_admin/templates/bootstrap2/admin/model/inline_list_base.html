@@ -1,23 +1,23 @@
 {% macro render_inline_fields(field, template, render, check=None) %}
-<div class="inline-field" id="{{ field.id }}">
+<div class="inline-field" id="[[ field.id ]]">
     {# existing inline form fields #}
     <div class="inline-field-list">
         {% for subfield in field %}
-        <div id="{{ subfield.id }}" class="inline-field well well-small">
+        <div id="[[ subfield.id ]]" class="inline-field well well-small">
             {%- if not check or check(subfield) %}
             <legend>
-                {{ field.label.text }} #{{ loop.index }}
+                [[ field.label.text ]] #[[ loop.index ]]
                 <div class="pull-right">
                     {% if subfield.get_pk and subfield.get_pk() %}
-                    <input type="checkbox" name="del-{{ subfield.id }}" id="del-{{ subfield.id }}" />
-                    <label for="del-{{ subfield.id }}" style="display: inline">{{ _gettext('Delete?') }}</label>
+                    <input type="checkbox" name="del-[[ subfield.id ]]" id="del-[[ subfield.id ]]" />
+                    <label for="del-[[ subfield.id ]]" style="display: inline">[[ _gettext('Delete?') ]]</label>
                     {% else %}
-                    <a href="javascript:void(0)" value="{{ _gettext('Are you sure you want to delete this record?') }}" class="inline-remove-field"><i class="fa fa-times icon-remove"></i></a>
+                    <a href="javascript:void(0)" value="[[ _gettext('Are you sure you want to delete this record?') ]]" class="inline-remove-field"><i class="fa fa-times icon-remove"></i></a>
                     {% endif %}
                 </div>
             </legend>
             {%- endif -%}
-            {{ render(subfield) }}
+            [[ render(subfield) ]]
         </div>
         {% endfor %}
     </div>
@@ -27,16 +27,16 @@
         {% filter forceescape %}
         <div class="inline-field well well-small">
             <legend>
-                {{ _gettext('New') }} {{ field.label.text }}
+                [[ _gettext('New') ]] [[ field.label.text ]]
                 <div class="pull-right">
-                <a href="javascript:void(0)" value="{{ _gettext('Are you sure you want to delete this record?') }}" class="inline-remove-field"><i class="fa fa-times icon-remove"></i></a>
+                <a href="javascript:void(0)" value="[[ _gettext('Are you sure you want to delete this record?') ]]" class="inline-remove-field"><i class="fa fa-times icon-remove"></i></a>
                 </div>
             </legend>
-            {{ render(template) }}
+            [[ render(template) ]]
         </div>
         {% endfilter %}
     </div>
 
-    <a id="{{ field.id }}-button" href="javascript:void(0)" class="btn" onclick="faForm.addInlineField(this, '{{ field.id }}');">{{ _gettext('Add') }} {{ field.label.text }}</a>
+    <a id="[[ field.id ]]-button" href="javascript:void(0)" class="btn" onclick="faForm.addInlineField(this, '[[ field.id ]]');">[[ _gettext('Add') ]] [[ field.label.text ]]</a>
 </div>
 {% endmacro %}

@@ -3,30 +3,30 @@
 
   {% if type == 'tuple' or type == 'list' %}
     {% if not item %}
-      Empty {{ type }}.
+      Empty [[ type ]].
     {% else %}
       {% for n in item %}
-        {{ loop.index }}) {{ render(n, depth + 1) }}<br/>
+        [[ loop.index ]]) [[ render(n, depth + 1) ]]<br/>
       {% endfor %}
     {% endif %}
   {% elif type == 'bool' %}
     {% if depth == 0 and item %}
     OK
     {% else %}
-    <span class="type-bool">{{ item }}</span>
+    <span class="type-bool">[[ item ]]</span>
     {% endif %}
   {% elif type == 'str' or type == 'unicode' %}
-    "{{ item }}"
+    "[[ item ]]"
   {% elif type == 'bytes' %}
-    "{{ item.decode('utf-8') }}"
+    "[[ item.decode('utf-8') ]]"
   {% elif type == 'TextWrapper' %}
-    <pre>{{ item }}</pre>
+    <pre>[[ item ]]</pre>
   {% elif type == 'dict' %}
     {% for k, v in item.items() %}
-      {{ loop.index }}) {{ k }} - {{ render(v, depth + 1) }}<br/>
+      [[ loop.index ]]) [[ k ]] - [[ render(v, depth + 1) ]]<br/>
     {% endfor %}
   {% else %}
-    {{ item }}
+    [[ item ]]
   {% endif %}
 {% endmacro %}
-{{ render(result) }}
+[[ render(result) ]]
