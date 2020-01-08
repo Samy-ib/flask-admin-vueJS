@@ -15,7 +15,7 @@ def read(fname):
 
 
 def desc():
-    info = read('README.rst')
+    info = read('README.md')
     try:
         return info + '\n\n' + read('doc/changelog.rst')
     except IOError:
