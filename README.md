@@ -20,6 +20,6 @@ Of course, you will need to change the default flask delimiters. One way of doin
 
 ```
 git clone git@github.com:Samy-ib/flask-admin-vueJS.git
-cd flask-admin
+cd flask-admin-vueJS
 python setup.py install
 ```
