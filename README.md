@@ -1,7 +1,7 @@
 # Flask-Admin for VueJS
 
 
-Adapted flask-admin for use with VueJS by changing the flask delimiters to "[[]]' instead of "{{}}".
+Adapted flask-admin for use with VueJS by changing the flask-admin template's delimiters to "[[]]' instead of "{{}}".
 
 Of course, you will need to change the default flask delimiters. One way of doing so is by inheriting the Flask object:
 
